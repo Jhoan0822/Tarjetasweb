@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjetas y Tarjetas - Publicidad & Business</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter & Cinzel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a192f; /* Fallback background */
+        }
+        /* Definición de colores corporativos para fácil uso */
+        :root {
+            --color-primary: #0a192f;
+            --color-secondary: #172a46;
+            --color-accent: #00bfff;
+            --color-text-light: #ccd6f6;
+            --color-text-dark: #8892b0;
+        }
+        /* Clases de utilidad de colores */
+        .bg-primary { background-color: var(--color-primary); }
+        .bg-secondary { background-color: var(--color-secondary); }
+        .text-accent { color: var(--color-accent); }
+        .border-accent { border-color: var(--color-accent); }
+        .text-light { color: var(--color-text-light); }
+        .text-dark { color: var(--color-text-dark); }
+        
+        /* Tipografía para el logo */
+        .logo-font {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Efecto de scroll suave */
+        html { scroll-behavior: smooth; }
+
+        /* Animación para tarjetas de productos */
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Estilos para el fondo interactivo */
+        #interactive-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        /* Asegurar que el contenido esté por encima del fondo */
+        header, main, footer {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="bg-primary text-light">
+    <!-- Canvas para el fondo interactivo -->
+    <canvas id="interactive-bg"></canvas>
+
+    <!-- Header y Navegación -->
+    <header class="bg-primary/80 backdrop-blur-sm sticky top-0 z-50 shadow-md shadow-black/20">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl lg:text-3xl font-bold text-white logo-font tracking-wider">
+                Tarjetas <span class="text-accent">&</span> Tarjetas
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#servicios" class="hover:text-accent transition-colors duration-300">Servicios</a>
+                <a href="#nosotros" class="hover:text-accent transition-colors duration-300">Nosotros</a>
+                <a href="#contacto" class="hover:text-accent transition-colors duration-300">Contacto</a>
+            </div>
+            <a href="https://wa.me/573154553445?text=Hola,%20quisiera%20más%20información%20sobre%20sus%20servicios." target="_blank" class="hidden md:block bg-accent text-primary font-bold py-2 px-4 rounded-lg hover:bg-opacity-80 transition-all duration-300">
+                Cotizar ahora
+            </a>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+        </nav>
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary">
+            <a href="#servicios" class="block text-center py-3 px-4 text-sm hover:bg-primary">Servicios</a>
+            <a href="#nosotros" class="block text-center py-3 px-4 text-sm hover:bg-primary">Nosotros</a>
+            <a href="#contacto" class="block text-center py-3 px-4 text-sm hover:bg-primary">Contacto</a>
+             <a href="https://wa.me/573154553445?text=Hola,%20quisiera%20más%20información%20sobre%20sus%20servicios." target="_blank" class="block text-center py-4 px-4 bg-accent text-primary font-bold">
+                Cotizar ahora
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center bg-transparent">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4">
+                        Impresiones de <span class="text-accent">Alta Calidad</span> para tu Negocio
+                    </h1>
+                    <p class="text-lg md:text-xl text-dark mb-8">
+                        Publicidad & Business: Soluciones en impresión offset y digital para llevar tu marca al siguiente nivel.
+                    </p>
+                    <div class="flex justify-center items-center gap-4 flex-wrap">
+                        <a href="#servicios" class="bg-accent text-primary font-bold py-3 px-8 rounded-lg text-lg hover:bg-opacity-80 transition-all duration-300">
+                            Ver Catálogo
+                        </a>
+                        <a href="#contacto" class="border-2 border-accent text-accent font-bold py-3 px-8 rounded-lg text-lg hover:bg-accent hover:text-primary transition-all duration-300">
+                            Contáctanos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Servicios / Catálogo -->
+        <section id="servicios" class="py-20 bg-secondary/90 backdrop-blur-sm">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-white">Nuestro Catálogo de Productos</h2>
+                    <p class="text-dark mt-2">Soluciones de impresión adaptadas a tus necesidades.</p>
+                    <div class="w-24 h-1 bg-accent mx-auto mt-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Tarjetas de Presentación -->
+                    <div class="product-card bg-primary p-8 rounded-lg shadow-lg text-center">
+                        <img src="images/tarjetas-presentacion.png" alt="Imagen de tarjetas de presentación" class="w-full h-48 object-cover rounded-md mb-6" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a192f/FFFFFF?text=Imagen+no+disponible';">
+                        <h3 class="text-2xl font-bold text-white mb-3">Tarjetas de Presentación</h3>
+                        <p class="text-dark mb-6">Causa una primera impresión memorable con tarjetas de alta calidad, disponibles en diversos materiales, acabados y diseños personalizados.</p>
+                        <a href="https://wa.me/573154553445?text=Hola,%20me%20interesan%20las%20tarjetas%20de%20presentación." target="_blank" class="text-accent font-semibold hover:underline">Más Información <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                    <!-- Volantes y Folletos -->
+                    <div class="product-card bg-primary p-8 rounded-lg shadow-lg text-center">
+                        <img src="images/volantes-folletos.png" alt="Imagen de volantes y folletos" class="w-full h-48 object-cover rounded-md mb-6" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a192f/FFFFFF?text=Imagen+no+disponible';">
+                        <h3 class="text-2xl font-bold text-white mb-3">Volantes y Folletos</h3>
+                        <p class="text-dark mb-6">Comunica tus promociones y eventos de forma masiva y efectiva. Impresión a full color en diferentes tamaños y tipos de papel.</p>
+                        <a href="https://wa.me/573154553445?text=Hola,%20quisiera%20información%20sobre%20volantes%20y%20folletos." target="_blank" class="text-accent font-semibold hover:underline">Más Información <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                    <!-- Impresión Offset -->
+                    <div class="product-card bg-primary p-8 rounded-lg shadow-lg text-center">
+                        <img src="images/impresion-offset.png" alt="Imagen de máquina de impresión offset" class="w-full h-48 object-cover rounded-md mb-6" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a192f/FFFFFF?text=Imagen+no+disponible';">
+                        <h3 class="text-2xl font-bold text-white mb-3">Impresión Offset</h3>
+                        <p class="text-dark mb-6">Ideal para grandes volúmenes con calidad y costos inmejorables. Perfecto para revistas, catálogos, libros y papelería corporativa.</p>
+                        <a href="https://wa.me/573154553445?text=Hola,%20necesito%20una%20cotización%20de%20impresión%20offset." target="_blank" class="text-accent font-semibold hover:underline">Más Información <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                    <!-- Impresión Digital -->
+                    <div class="product-card bg-primary p-8 rounded-lg shadow-lg text-center">
+                        <img src="images/impresion-digital.png" alt="Imagen de impresora digital" class="w-full h-48 object-cover rounded-md mb-6" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a192f/FFFFFF?text=Imagen+no+disponible';">
+                        <h3 class="text-2xl font-bold text-white mb-3">Impresión Digital</h3>
+                        <p class="text-dark mb-6">Flexibilidad y rapidez para tirajes cortos y personalizados. Calidad fotográfica para tus proyectos urgentes sin sacrificar el acabado.</p>
+                        <a href="https://wa.me/573154553445?text=Hola,%20tengo%20una%20consulta%20sobre%20impresión%20digital." target="_blank" class="text-accent font-semibold hover:underline">Más Información <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                    <!-- Pendones y Gran Formato -->
+                    <div class="product-card bg-primary p-8 rounded-lg shadow-lg text-center">
+                        <img src="images/pendones-gran-formato.png" alt="Imagen de un pendón publicitario" class="w-full h-48 object-cover rounded-md mb-6" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a192f/FFFFFF?text=Imagen+no+disponible';">
+                        <h3 class="text-2xl font-bold text-white mb-3">Pendones y Gran Formato</h3>
+                        <p class="text-dark mb-6">Publicidad de alto impacto para tus eventos y puntos de venta. Materiales resistentes y duraderos para interior y exterior.</p>
+                        <a href="https://wa.me/573154553445?text=Hola,%20necesito%20cotizar%20un%20pendón." target="_blank" class="text-accent font-semibold hover:underline">Más Información <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                    <!-- Papelería Corporativa -->
+                    <div class="product-card bg-primary p-8 rounded-lg shadow-lg text-center">
+                        <img src="images/papeleria-corporativa.png" alt="Imagen de papelería corporativa" class="w-full h-48 object-cover rounded-md mb-6" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a192f/FFFFFF?text=Imagen+no+disponible';">
+                        <h3 class="text-2xl font-bold text-white mb-3">Papelería Corporativa</h3>
+                        <p class="text-dark mb-6">Unifica la imagen de tu empresa con hojas membretadas, sobres, carpetas y facturas personalizadas. Refuerza tu identidad de marca.</p>
+                        <a href="https://wa.me/573154553445?text=Hola,%20quisiera%20saber%20más%20sobre%20papelería%20corporativa." target="_blank" class="text-accent font-semibold hover:underline">Más Información <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Nosotros (Mejorada) -->
+        <section id="nosotros" class="py-20 bg-primary/90 backdrop-blur-sm">
+            <div class="container mx-auto px-6">
+                 <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2">
+                        <h2 class="text-4xl font-bold text-white mb-4">Más de 20 Años de Experiencia</h2>
+                        <div class="w-24 h-1 bg-accent mb-6"></div>
+                        <p class="text-dark mb-4">En <span class="text-light font-semibold">Tarjetas y Tarjetas</span>, combinamos la tradición de la litografía con la innovación de la impresión digital. Nuestro compromiso es ofrecer productos de la más alta calidad que ayuden a nuestros clientes a crecer y destacar en el mercado.</p>
+                        <p class="text-dark mb-6">Contamos con dos sedes estratégicamente ubicadas en Palmira y Cali para brindar un servicio cercano y eficiente a todo el Valle del Cauca. Nuestro equipo de expertos está listo para asesorarte y materializar tus ideas.</p>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-lg text-light mb-2">Nuestra Misión</h4>
+                                <p class="text-dark">Proveer soluciones de impresión innovadoras y de alta calidad que superen las expectativas de nuestros clientes, impulsando el éxito de sus negocios.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-light mb-2">Nuestra Visión</h4>
+                                <p class="text-dark">Ser la empresa líder en servicios de impresión en la región, reconocida por nuestra calidad, confiabilidad y excelente servicio al cliente.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <img src="images/nuestro-taller.png" alt="Imagen del equipo o taller de Tarjetas y Tarjetas" class="rounded-lg shadow-xl" onerror="this.onerror=null;this.src='https://placehold.co/800x600/0a192f/FFFFFF?text=Imagen+no+disponible';">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Contacto (con Mapas) -->
+        <section id="contacto" class="py-20 bg-secondary/90 backdrop-blur-sm">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-white">Contáctanos</h2>
+                    <p class="text-dark mt-2">Visítanos en nuestras sedes o envíanos un mensaje. ¡Estamos para servirte!</p>
+                    <div class="w-24 h-1 bg-accent mx-auto mt-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+                    <!-- Sede Palmira -->
+                    <div class="bg-primary p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold text-white mb-4">Sede Palmira</h3>
+                        <ul class="space-y-4 text-dark mb-6">
+                            <li class="flex items-start"><i class="fas fa-map-marker-alt text-accent mt-1 mr-4"></i><span>Carrera 30 # 29-15</span></li>
+                            <li class="flex items-start"><i class="fas fa-phone text-accent mt-1 mr-4"></i><span>(602) 285 9770</span></li>
+                            <li class="flex items-start"><i class="fab fa-whatsapp text-accent mt-1 mr-4"></i><a href="https://wa.me/573154553445" target="_blank" class="hover:text-accent">315 455 3445</a></li>
+                            <li class="flex items-start"><i class="fas fa-envelope text-accent mt-1 mr-4"></i><a href="mailto:tarjetasytarjetas.76@hotmail.com" class="hover:text-accent break-all">tarjetasytarjetas.76@hotmail.com</a></li>
+                        </ul>
+                        <div class="aspect-w-16 aspect-h-9 rounded-md overflow-hidden">
+                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.023594892404!2d-76.3015693856955!3d3.5828469974959146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3a730f7d045d6d%3A0x3bce7d7807b53e87!2sCra.%2030%20%2329-15%2C%20Palmira%2C%20Valle%20del%20Cauca%2C%20Colombia!5e0!3m2!1ses!2sus!4v1678886452135!5m2!1ses!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                    <!-- Sede Cali -->
+                    <div class="bg-primary p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold text-white mb-4">Sede Cali</h3>
+                         <ul class="space-y-4 text-dark mb-6">
+                            <li class="flex items-start"><i class="fas fa-map-marker-alt text-accent mt-1 mr-4"></i><span>Carrera 5 # 20-33</span></li>
+                            <li class="flex items-start"><i class="fab fa-whatsapp text-accent mt-1 mr-4"></i><a href="https://wa.me/573122282618" target="_blank" class="hover:text-accent">312 228 2618</a></li>
+                            <li class="flex items-start"><i class="fas fa-envelope text-accent mt-1 mr-4"></i><a href="mailto:tarjetasytarjetas.cali@hotmail.com" class="hover:text-accent break-all">tarjetasytarjetas.cali@hotmail.com</a></li>
+                        </ul>
+                         <div class="aspect-w-16 aspect-h-9 rounded-md overflow-hidden">
+                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.593796851608!2d-76.53752938569584!3d3.44754899754876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6644f8f2b3b%3A0x6335193952f4477b!2sCra.%205%20%2320-33%2C%20Cali%2C%20Valle%20del%20Cauca%2C%20Colombia!5e0!3m2!1ses!2sus!4v1678886561211!5m2!1ses!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary py-8">
+        <div class="container mx-auto px-6 text-center text-dark">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" target="_blank" class="text-2xl hover:text-accent transition-colors"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank" class="text-2xl hover:text-accent transition-colors"><i class="fab fa-instagram"></i></a>
+                 <a href="https://wa.me/573154553445" target="_blank" class="text-2xl hover:text-accent transition-colors"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>© <span id="year"></span> Tarjetas y Tarjetas. Todos los derechos reservados.</p>
+            <p>Diseño web profesional.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // --- Lógica para el menú móvil ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // --- Actualizar el año del footer ---
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // --- Lógica para el fondo interactivo de Marcas de Registro ---
+        const canvas = document.getElementById('interactive-bg');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray;
+        const cmykColors = ['rgba(0, 255, 255, 0.5)', 'rgba(255, 0, 255, 0.5)', 'rgba(255, 255, 0, 0.5)', 'rgba(40, 40, 40, 0.5)'];
+        const shapes = ['crosshair', 'target'];
+
+        const mouse = { x: null, y: null, radius: (canvas.height / 150) * (canvas.width / 150) };
+
+        window.addEventListener('mousemove', event => {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+
+        // --- Funciones para dibujar las formas ---
+        function drawCrosshair(x, y, size, color) {
+            ctx.strokeStyle = color;
+            ctx.lineWidth = size / 4;
+            ctx.beginPath();
+            ctx.moveTo(x - size, y);
+            ctx.lineTo(x + size, y);
+            ctx.moveTo(x, y - size);
+            ctx.lineTo(x, y + size);
+            ctx.stroke();
+        }
+
+        function drawTarget(x, y, size, color) {
+            ctx.strokeStyle = color;
+            ctx.lineWidth = size / 4;
+            // Círculo exterior
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+            ctx.stroke();
+            // Cruz interior
+            ctx.beginPath();
+            ctx.moveTo(x - size / 1.5, y);
+            ctx.lineTo(x + size / 1.5, y);
+            ctx.moveTo(x, y - size / 1.5);
+            ctx.lineTo(x, y + size / 1.5);
+            ctx.stroke();
+        }
+
+        // --- Clase de Partícula (actualizada) ---
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color, shape) {
+                this.x = x; this.y = y;
+                this.directionX = directionX; this.directionY = directionY;
+                this.size = size; this.color = color;
+                this.shape = shape;
+            }
+            // Método para dibujar la partícula según su forma
+            draw() {
+                switch(this.shape) {
+                    case 'crosshair':
+                        drawCrosshair(this.x, this.y, this.size, this.color);
+                        break;
+                    case 'target':
+                        drawTarget(this.x, this.y, this.size, this.color);
+                        break;
+                    default: // Por si acaso, dibuja un círculo
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                        ctx.fillStyle = this.color;
+                        ctx.fill();
+                }
+            }
+            // Método para actualizar la posición de la partícula
+            update() {
+                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+                
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < mouse.radius + this.size) {
+                    if (mouse.x < this.x && this.x < canvas.width - this.size * 10) this.x += 3;
+                    if (mouse.x > this.x && this.x > this.size * 10) this.x -= 3;
+                    if (mouse.y < this.y && this.y < canvas.height - this.size * 10) this.y += 3;
+                    if (mouse.y > this.y && this.y > this.size * 10) this.y -= 3;
+                }
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+        
+        // --- Inicialización de partículas (actualizada) ---
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 15000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 4) + 2; // Un poco más grandes para que se vean
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * .3) - .15;
+                let directionY = (Math.random() * .3) - .15;
+                let color = cmykColors[Math.floor(Math.random() * cmykColors.length)];
+                let shape = shapes[Math.floor(Math.random() * shapes.length)];
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color, shape));
+            }
+        }
+        
+        // --- Bucle de Animación ---
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+        }
+
+        // --- Eventos de reescalado y salida del mouse ---
+        window.addEventListener('resize', () => {
+            canvas.width = innerWidth;
+            canvas.height = innerHeight;
+            mouse.radius = (canvas.height / 150) * (canvas.width / 150);
+            init();
+        });
+
+        window.addEventListener('mouseout', () => {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
+
+        init();
+        animate();
+    </script>
+</body>
+</html>
